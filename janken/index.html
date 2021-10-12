@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- リセットcss読み込み -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- style.css読み込み -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- jquery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>ジャンケンゲーム</title>
+</head>
+<body>
+    <!-- タイトルエリア -->
+    <div class="main">
+        <h1 class="title">ジャンケンゲーム</h1>
+    </div>
+
+    <!-- 結果表示エリア -->
+    <div class="result">
+       <h2 class="text">相手が出したのは・・</h2>
+       <p class="result-img"></p>
+       <div class="result-text"></div>
+    </div>
+
+    <!-- 入力エリア -->
+    <div class="my-hand">
+        <ul class="hand-list">
+            <li id="gu" class="hand" value="1"><p><img class="hand-img" src="images/gu.png" alt=""></p></li>
+            <li id="choki" class="hand" value="2"><p><img class="hand-img" src="images/choki.png" alt=""></p></li>
+            <li id="pa" class="hand" value="3"><p><img class="hand-img" src="images/pa.png" alt=""></p></li>
+        </ul>
+    </div>
+
+<!-- ここからjs -->
+<script>
+    //クリックイベント グーボタンが押されたら実行
+    $("#gu").on("click",function(){
+        console.log("グーが押されました");
+
+        //3までの数字をランダムに生成、代入
+        //Math.floor で整数部のみに
+        let num =Math.floor(Math.random()*3);
+        console.log(num+"を変数に格納しました");
+
+        //条件分岐でじゃんけんの結果で画像を選択・表示
+        //0:グー
+        //1：チョキ
+        //2:パー
+
+        //0:グーの時
+        if(num==0){
+            //$('.result-img').html('<img src="G:\マイドライブ\99_研修等\202109_WEBアプリ研修\yamato_web_3\yamato_web_3\janken\images\gu.png" alt="">');
+       
+            $('.result-img').html('<img src="images/gu.png" alt="">');
+            $('.result-img').hide().fadeIn(1000)
+            $('.result-text').html('<p>おあいこ</p>');
+            console.log("gu guの結果を表示しました");
+        //1:チョキの時           
+        }else if(num==1){
+            $('.result-img').html('<img src="images/choki.png" alt="">');
+            $('.result-img').hide().fadeIn(1000)
+            $('.result-text').html('<p>勝利！！</p>');
+            console.log("gu chokiの結果を表示しました");
+        //2:パーの時     
+        }else if(num==2){
+            $('.result-img').html('<img src="images/pa.png" alt="">');
+            $('.result-img').hide().fadeIn(1000)
+            $('.result-text').html('<p>残念・・・</p>');
+            console.log("gu paの結果を表示しました");
+        }else {
+            $('.result-text').html('<p>エラーです。</p>');
+            console.log("想定外の入力が行われました");
+        }
+    });    
+
+    //クリックイベント chokiボタンが押されたら実行
+    $("#choki").on("click",function(){
+        console.log("chokiが押されました");
+
+        //3までの数字をランダムに生成、代入
+        //Math.floor で整数部のみに
+        let num =Math.floor(Math.random()*3);
+        console.log(num+"を変数に格納しました");
+
+        //条件分岐でじゃんけんの結果で画像を選択・表示
+        //0:グーの時
+        if(num==0){
+            $('.result-img').html('<img src="images/gu.png" alt="">');
+            $('.result-text').html('<p>残念・・・</p>');
+            console.log("choki guの結果を表示しました");
+        //1:チョキの時           
+        }else if(num==1){
+            $('.result-img').html('<img src="images/choki.png" alt="">');
+            $('.result-text').html('<p>おあいこ</p>');
+            console.log("choki chokiの結果を表示しました");
+        //2:パーの時     
+        }else if(num==2){
+            $('.result-img').html('<img src="images/pa.png" alt="">');
+            $('.result-text').html('<p>勝利！！</p>');
+            console.log("choki paの結果を表示しました");
+        }else {
+            $('.result-text').html('<p>エラーです。</p>');
+            console.log("想定外の入力が行われました");
+        }
+    });   
+
+        //クリックイベント paボタンが押されたら実行
+        $("#pa").on("click",function(){
+        console.log("paが押されました");
+
+        //3までの数字をランダムに生成、代入
+        //Math.floor で整数部のみに
+        let num =Math.floor(Math.random()*3);
+        console.log(num+"を変数に格納しました");
+        
+        //条件分岐でじゃんけんの結果で画像を選択・表示
+        //0:グーの時
+        if(num==0){
+            $('.result-img').html('<img src="images/gu.png" alt="">');
+            $('.result-text').html('<p>勝利！！</p>');
+            console.log("pa guの結果を表示しました");
+        //1:チョキの時           
+        }else if(num==1){
+            $('.result-img').html('<img src="images/choki.png" alt="">');
+            $('.result-text').html('<p>残念・・・</p>');
+            console.log("pa chokiの結果を表示しました");
+        //2:パーの時     
+        }else if(num==2){
+            $('.result-img').html('<img src="images/pa.png" alt="">');
+            $('.result-text').html('<p>おあいこ</p>');
+            console.log("pa paの結果を表示しました");
+        }else {
+            $('.result-text').html('<p>エラーです。</p>');
+            console.log("想定外の入力が行われました");
+        }
+    });   
+</script>
+</body>
+</html>
